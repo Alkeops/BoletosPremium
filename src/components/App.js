@@ -1,20 +1,23 @@
-import { Grid } from "semantic-ui-react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import Dashboard from "../views/Dashboard/Dashboard";
+import Home from "../views/Home/Home";
+import ModalManager from "./common/modals/ModalManager";
+import EventDetail from "./events/EventDetail";
+import GuestList from "./guests/GuestList";
 import Header from "./layouts/Header";
 
 function App() {
   return (
     <>
-      <Header>
-        <h1>Hola! mundo cruel</h1>
-      </Header>
-      <Grid>
-        <Grid.Column width={10}>
-          <h2>Left Column</h2>
-        </Grid.Column>
-        <Grid.Column width={6}>
-          <h2>Right Column</h2>
-        </Grid.Column>
-      </Grid>
+      <ModalManager />
+      <Header />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/admin" exact component={Dashboard} />
+        <Route path="/admin/:id" exact component={EventDetail} />
+        <Route path="/admin/:id/:boleto" component={GuestList} />
+        <Redirect to="/" /> {/*TODO 404*/}
+      </Switch>
     </>
   );
 }

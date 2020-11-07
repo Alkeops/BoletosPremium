@@ -1,0 +1,29 @@
+.ui.container {
+  .ui.segment {
+    #tablaInvitado {
+      tbody {
+        .tabla-fila {
+          td {
+            position: relative;
+            top: 10px;
+            h3 {
+              margin-bottom: 0;
+            }
+            .iconos {
+              position: absolute;
+              right: 25px;
+              bottom: calc(50% - 10px);
+              i {
+                transition: 0.3s;
+                &:hover {
+                  color: #e60000;
+                  transform: scale(1.3);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

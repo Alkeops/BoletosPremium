@@ -1,0 +1,24 @@
+//BASE
+@import "./base/base";
+
+//COMPONENTS
+@import "./components/common";
+@import "./components/GuestList"; //PRINT
+
+@media print {
+  header {
+    display: none;
+  }
+  #buttonImprimir {
+    display: none;
+  }
+  #button {
+    display: none;
+  }
+  #buttonNuevoInvitado {
+    display: none;
+  }
+  h3 {
+    font-size: 12px;
+  }
+}
