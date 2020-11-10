@@ -12,11 +12,11 @@ const store = configureStore();
 const rootEl = document.getElementById("root");
 const render = () => {
   ReactDOM.render(
-    <Provider store={store}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
         <App />
-      </BrowserRouter>
-    </Provider>,
+      </Provider>
+    </BrowserRouter>,
     rootEl
   );
 };

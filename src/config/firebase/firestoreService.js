@@ -60,6 +60,32 @@ export const leerListaInvitados = async (id, tipo) => {
   return docs;
 };
 
+//STAFF
+
+export const buscarEventoStaff = async ({ numero, contraseña }) => {
+  const prueba = await eventosRef
+    .where("staffID", "==", numero)
+    .where("contraseña", "==", contraseña)
+    .get();
+
+  let evento;
+  prueba.forEach((doc) => (evento = { ...doc.data(), id: doc.id }));
+
+  if (evento) {
+    return {
+      nombre: evento.nombre,
+      tipoBoleto: evento.tipoBoleto,
+      id: evento.id
+    };
+  } else {
+    const errorMessage = {
+      code: 404,
+      message: "Numero de evento o contraseña invalidos"
+    };
+    throw errorMessage;
+  }
+};
+
 export const dataFromSnapshot = (snapshot) => {
   if (!snapshot.exits) return undefined;
   const data = snapshot.data();

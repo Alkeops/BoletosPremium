@@ -4,9 +4,16 @@ import LoginForm from "../../auth/LoginForm";
 import EventModal from "../../events/EventModal";
 import BoletoModal from "../../guests/BoletoModal";
 import GuestModal from "../../guests/GuestModal";
+import StaffModal from "../../staff/StaffModal";
 
 const ModalManager = () => {
-  const modalLookup = { LoginForm, EventModal, BoletoModal, GuestModal };
+  const modalLookup = {
+    LoginForm,
+    EventModal,
+    BoletoModal,
+    GuestModal,
+    StaffModal
+  };
   const currentModal = useSelector((state) => state.modals);
   let renderedModal;
   if (currentModal) {

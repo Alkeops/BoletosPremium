@@ -39,13 +39,23 @@ const Header = () => {
           )}
           <Menu.Item position="right">
             {!auth ? ( //TODO reordenar correctamente esto
-              <Button
-                onClick={() => dispatch(openModal({ modalType: "LoginForm" }))}
-                basic
-                inverted
-                content="Iniciar Sesion"
-                style={{ marginLeft: "0.5em" }}
-              />
+              <>
+                <Button
+                  onClick={() =>
+                    dispatch(openModal({ modalType: "LoginForm" }))
+                  }
+                  basic
+                  inverted
+                  content="Iniciar Sesion"
+                  style={{ marginRight: "0.5em" }}
+                />
+                <Button
+                  content="Entrada Staff"
+                  onClick={() =>
+                    dispatch(openModal({ modalType: "StaffModal" }))
+                  }
+                />
+              </>
             ) : (
               <Button
                 onClick={handleCerrarSesion}
