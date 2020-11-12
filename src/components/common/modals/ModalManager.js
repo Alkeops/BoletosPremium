@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import LoginForm from "../../auth/LoginForm";
 import EventModal from "../../events/EventModal";
+import PassStaff from "../../events/PassStaff";
 import BoletoModal from "../../guests/BoletoModal";
 import GuestModal from "../../guests/GuestModal";
 import StaffModal from "../../staff/StaffModal";
@@ -12,7 +13,8 @@ const ModalManager = () => {
     EventModal,
     BoletoModal,
     GuestModal,
-    StaffModal
+    StaffModal,
+    PassStaff
   };
   const currentModal = useSelector((state) => state.modals);
   let renderedModal;

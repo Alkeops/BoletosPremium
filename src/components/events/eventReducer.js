@@ -4,7 +4,8 @@ const {
   ACTUALIZAR_EVENTO,
   BORRAR_EVENTO,
   AGREGAR_TIPOBOLETO_EVENTO,
-  ELIMINAR_TIPOBOLETO_EVENTO
+  ELIMINAR_TIPOBOLETO_EVENTO,
+  AGREGAR_CONTRASENA_STAFF
 } = require("./eventConstants");
 
 const initialState = {
@@ -38,6 +39,8 @@ const eventReducer = (state = initialState, { type, payload }) => {
           payload
         ]
       };
+    case AGREGAR_CONTRASENA_STAFF:
+      return { ...state };
     case ELIMINAR_TIPOBOLETO_EVENTO:
       return {
         ...state,

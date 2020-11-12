@@ -1,5 +1,6 @@
 import cuid from "cuid";
 import {
+  agregarContraseña,
   cargarEventos,
   crearNuevoEvento,
   eliminarEvento,
@@ -11,7 +12,8 @@ import {
   CREAR_EVENTO,
   CARGAR_EVENTOS,
   AGREGAR_TIPOBOLETO_EVENTO,
-  ELIMINAR_TIPOBOLETO_EVENTO
+  ELIMINAR_TIPOBOLETO_EVENTO,
+  AGREGAR_CONTRASENA_STAFF
 } from "./eventConstants";
 
 export const cargarEvento = () => async (dispatch) => {
@@ -79,5 +81,14 @@ export const eliminarBoletoEvento = (eventoId, boleto) => (
   dispatch({
     type: ELIMINAR_TIPOBOLETO_EVENTO,
     payload: evento
+  });
+};
+
+export const agregarContrasenaStaff = (eventoId, { contraseña }) => (
+  dispatch
+) => {
+  agregarContraseña(eventoId, contraseña);
+  dispatch({
+    type: AGREGAR_CONTRASENA_STAFF
   });
 };

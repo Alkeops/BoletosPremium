@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cuid from "cuid";
 import { Link } from "react-router-dom";
-import { Button, Container, List, Segment } from "semantic-ui-react";
+import { Button, Container, Label, List, Segment } from "semantic-ui-react";
 import { openModal } from "../common/modals/modalReducer";
 import {
   cargarBoletos,
@@ -26,19 +26,40 @@ const EventDetail = ({ match }) => {
     dispatch(resetInvitados());
   }, [dispatch, match.params.id]);
   const url = match.params.id;
-
   return (
     <>
       <GoBack />
       <Container>
-        <h1 style={{ textAlign: "center", textTransform: "uppercase" }}>
-          {eventoSeleccionado.nombre}
-        </h1>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}
+        >
+          <h1 style={{ textTransform: "uppercase" }}>
+            {eventoSeleccionado.nombre}
+            <Label
+              style={{ border: "1px solid black", marginLeft: 20 }}
+              size="big"
+            >
+              {eventoSeleccionado.staffID}
+            </Label>
+          </h1>
+        </div>
         <Button
           content="Agregar un tipo de boleto"
           secondary
           onClick={() =>
             dispatch(openModal({ modalType: "BoletoModal", id: url }))
+          }
+        />
+        <Button
+          floated="right"
+          positive
+          content="Crear contraseña para Staff"
+          onClick={() =>
+            dispatch(openModal({ modalType: "PassStaff", id: url }))
           }
         />
         {tipoBoleto.length ? (

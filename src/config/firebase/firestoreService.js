@@ -24,7 +24,8 @@ export const crearNuevoEvento = async (id, evento) => {
       ...evento,
       uid: user.uid,
       nombre: evento.nombre,
-      tipoBoleto: []
+      tipoBoleto: [],
+      staffID: Math.floor(Math.random() * 899999999 + 100000000)
     });
 };
 export const eliminarEvento = async (id) => eventosRef.doc(id).delete();
@@ -33,6 +34,13 @@ export const eliminarTodosLosDoc = async (eventoId, tipoBoleto) => {
   const query = await eventosRef.doc(eventoId).collection(tipoBoleto).get();
   query.forEach((doc) => {
     doc.ref.delete();
+  });
+};
+
+//AGREGAR CONTRASEÑA STAFF
+export const agregarContraseña = async (id, contraseña) => {
+  return await eventosRef.doc(id).update({
+    contraseña
   });
 };
 

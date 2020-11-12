@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, Icon, List, Segment } from "semantic-ui-react";
+import { List, Segment } from "semantic-ui-react";
 import { db } from "../../config/firebase/firestoreService";
+import StaffListItem from "./StaffListItem";
 
 const StaffList = ({ boleto, idEvento }) => {
   const [invitados, setInvitados] = useState([]);
-  const [marcar, setMarcar] = useState(false);
-  const [idSelect, setIdSelect] = useState("");
   useEffect(() => {
     db.collection("eventos")
       .doc(idEvento)
@@ -23,41 +22,15 @@ const StaffList = ({ boleto, idEvento }) => {
   return (
     <>
       <h1 style={{ textAlign: "center" }}>{boleto}</h1>
-      <Segment inverted>
-        <List divided inverted relaxed>
+      <Segment>
+        <List divided>
           {invitados.map(({ nombre, asistencia, id }) => (
-            <List.Item
+            <StaffListItem
               key={id}
-              style={{
-                backgroundColor: asistencia ? "green" : null,
-                paddingLeft: 20
-              }}
-            >
-              <List.Content floated="left">
-                <p>{nombre}</p>
-              </List.Content>
-              <List.Content
-                floated="right"
-                onClick={() => {
-                  setIdSelect(id);
-                  setMarcar(!marcar);
-                }}
-              >
-                {marcar && idSelect === id ? (
-                  <>
-                    <Button
-                      primary
-                      content={asistencia ? "Marcar Salida" : "Marcar Entrada"}
-                      style={{ padding: "5px 9px" }}
-                    />
-                  </>
-                ) : asistencia ? (
-                  <Icon name="check" />
-                ) : (
-                  <Icon name="close" />
-                )}
-              </List.Content>
-            </List.Item>
+              nombre={nombre}
+              asistencia={asistencia}
+              id={id}
+            />
           ))}
         </List>
       </Segment>
