@@ -8,9 +8,11 @@ import { Button, Label } from "semantic-ui-react";
 import { closeModal } from "../common/modals/modalReducer";
 import { cargarEventoStaff } from "./staffReducer";
 import { buscarEventoStaff } from "../../config/firebase/firestoreService";
+import { useHistory } from "react-router-dom";
 
 const StaffModal = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   return (
     <ModalWrapper size="mini" header="Acceso Staff">
       <Formik
@@ -27,6 +29,7 @@ const StaffModal = () => {
             dispatch(cargarEventoStaff(evento));
             setSubmitting(false);
             dispatch(closeModal());
+            history.push(`/${evento.id}`);
           } catch ({ message }) {
             setSubmitting(false);
             setErrors({ log: message });

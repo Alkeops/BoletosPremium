@@ -1,6 +1,6 @@
 import firebase from "./firebase";
 
-const db = firebase.firestore();
+export const db = firebase.firestore();
 const eventosRef = db.collection("eventos");
 //TODO Modificar este punto
 

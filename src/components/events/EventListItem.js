@@ -10,7 +10,6 @@ const EventListItem = ({ nombre, id }) => {
   return (
     <List.Item>
       <List.Content
-        verticalAlign="center"
         floated="left"
         style={{ marginLeft: "20px" }}
         as={Link}
