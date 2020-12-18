@@ -19,9 +19,9 @@ const StaffModal = () => {
         initialValues={{ numero: "", contraseña: "" }}
         validationSchema={Yup.object({
           numero: Yup.string().required("Ingresa el numero de evento"),
-          contraseña: Yup.string().required(
-            "Ingresa la contraseña que te dio el administrador"
-          )
+          contraseña: Yup.string()
+            .required("Ingresa el PIN que te dio el administrador")
+            .length(4, "El PIN es de 4 digitos")
         })}
         onSubmit={async (values, { setSubmitting, setErrors }) => {
           try {
@@ -39,7 +39,11 @@ const StaffModal = () => {
         {({ isSubmitting, isValid, dirty, errors }) => (
           <Form className="ui form">
             <TextInput name="numero" placeholder="Numero del evento" />
-            <TextInput name="contraseña" placeholder="Contraseña del evento" />
+            <TextInput
+              type="password"
+              name="contraseña"
+              placeholder="PIN del evento"
+            />
             {errors.log && (
               <Label
                 basic

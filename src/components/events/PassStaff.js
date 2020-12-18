@@ -13,13 +13,13 @@ import { agregarContrasenaStaff } from "./eventActions";
 const PassStaff = ({ id }) => {
   const dispatch = useDispatch();
   return (
-    <ModalWrapper size="mini" header="Crea una contraseña para el Staff">
+    <ModalWrapper size="mini" header="Crea un PIN para el Staff">
       <Formik
         initialValues={{ contraseña: "" }}
         validationSchema={Yup.object({
           contraseña: Yup.string()
-            .required("Ingresa una contraseña de 4 digitos")
-            .length(4, "La contraseña debe ser de 4 digitos")
+            .required("Ingresa una PIN de 4 digitos")
+            .length(4, "El PIN debe ser de 4 digitos")
         })}
         onSubmit={(values, { setSubmitting }) => {
           try {
@@ -35,7 +35,7 @@ const PassStaff = ({ id }) => {
       >
         {({ isSubmitting, isValid, dirty }) => (
           <Form className="ui form">
-            <TextInput name="contraseña" placeholder="Contraseña" />
+            <TextInput name="contraseña" placeholder="PIN" />
             <Button
               loading={isSubmitting}
               disabled={!isValid || !dirty || isSubmitting}
@@ -43,7 +43,7 @@ const PassStaff = ({ id }) => {
               fluid
               size="large"
               secondary
-              content="Agrega la contraseña"
+              content="Agrega el PIN"
             />
           </Form>
         )}

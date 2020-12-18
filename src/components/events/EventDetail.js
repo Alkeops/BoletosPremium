@@ -57,7 +57,7 @@ const EventDetail = ({ match }) => {
         <Button
           floated="right"
           positive
-          content="Crear contraseña para Staff"
+          content="Crear un PIN para Staff"
           onClick={() =>
             dispatch(openModal({ modalType: "PassStaff", id: url }))
           }
